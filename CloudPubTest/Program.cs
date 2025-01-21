@@ -6,7 +6,7 @@ internal class Program
     {
         CloudPubTunnel cloudPubTunnel = new();
         await cloudPubTunnel.InitCloudPub();
-        await cloudPubTunnel.SetToken("zh16elMtw9c2CBVw47gZa4ka8qDk6LuEdXzb_m2IDoQ");
+        await cloudPubTunnel.SetToken("YOUR_TOKEN");
         string publicAddress = cloudPubTunnel.OpenTunnel(CloudPubTunnel.TunnelType.HTTPS, 8443);
         Uri publicUri = new(publicAddress);
         Console.WriteLine(publicUri.AbsoluteUri);
