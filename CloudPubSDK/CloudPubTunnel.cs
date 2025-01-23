@@ -135,10 +135,10 @@ namespace CloudPubSDK
                     FileName = "clo.exe",
                     Arguments = $"publish {tunnelType.ToString().ToLower()} {port}",
                     WorkingDirectory = Environment.CurrentDirectory,
-                    CreateNoWindow = false,
-                    UseShellExecute = true,
-                    //RedirectStandardOutput = true,
-                    //StandardOutputEncoding = Encoding.UTF8
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    StandardOutputEncoding = Encoding.UTF8
                 };
                 DateTime startProcessTime = DateTime.Now;
                 cloudPubProcess = Process.Start(psi);
