@@ -135,10 +135,10 @@ namespace CloudPubSDK
                     FileName = "clo.exe",
                     Arguments = $"publish {tunnelType.ToString().ToLower()} {port}",
                     WorkingDirectory = Environment.CurrentDirectory,
-                    CreateNoWindow = true,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    StandardOutputEncoding = Encoding.UTF8
+                    CreateNoWindow = false,
+                    UseShellExecute = true,
+                    //RedirectStandardOutput = true,
+                    //StandardOutputEncoding = Encoding.UTF8
                 };
                 DateTime startProcessTime = DateTime.Now;
                 cloudPubProcess = Process.Start(psi);
@@ -216,6 +216,21 @@ namespace CloudPubSDK
             }
             else throw new NotSupportedException("SDK on this platform not supported");
         }
+        public bool IsTunnelAlive()
+        {
+            if (cloudPubProcess == null)
+            {
+                throw new InvalidOperationException("Tunnel process already was null");
+            }
+
+            var tunnelProcess = Process.GetProcessById(cloudPubProcess.Id);
+            if (tunnelProcess == null)
+            {
+                return false;
+            }
+            return !tunnelProcess.HasExited;
+        }
+
         public void CloseTunnel()
         {
             if (cloudPubProcess == null)

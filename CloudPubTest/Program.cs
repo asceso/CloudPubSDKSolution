@@ -11,6 +11,7 @@ internal class Program
         Uri publicUri = new(publicAddress);
         Console.WriteLine(publicUri.AbsoluteUri);
         Console.WriteLine(publicUri.Port);
+        var b = cloudPubTunnel.IsTunnelAlive();
         await Task.Delay(TimeSpan.FromSeconds(5));
         cloudPubTunnel.CloseTunnel();
     }

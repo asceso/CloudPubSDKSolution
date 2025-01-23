@@ -12,3 +12,4 @@
 4) Открыть тунель через метод ```OpenTunnel(TunnelType tunnelType, int port, int maxSecondsAttemptToOpen = 10)```, возможные варианты TunnelType ```enum TunnelType { HTTP, HTTPS }```
 5) В ответе метода OpenTunnel получаем публичный адрес с которым можно работать
 6) Если необходимо закончить работу вызываем ```CloseTunnel```
+7) Метод ```IsTunnelAlive``` позволяет получить состояние процесса (false если процесс выключен)
